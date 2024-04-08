@@ -206,7 +206,7 @@ class App(customtkinter.CTk):
         super().__init__()
 
         WIDTH = 1200
-        HEIGHT = 400
+        HEIGHT = 500
 
         customtkinter.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
         customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -316,7 +316,6 @@ class App(customtkinter.CTk):
                     new_card_frame.set_card_baudrate(value['baudrate'])
                     for i, val in enumerate(value['buttons']):
                         new_card_frame.card.set_button_name(i, val)
-                    print(new_card_frame)
                     new_card_frame.update_relay_button_names()
                     self._card_frames.append(new_card_frame)
                     cards += 1

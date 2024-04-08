@@ -7,6 +7,7 @@ class Card:
     def __init__(self, com_port=None, baudrate=0, **kwargs):
         if 'id' in kwargs:
             self._card_id = kwargs['id']
+            Card.num_cards.append(kwargs['id'])
         else:
             index = 0
             while index in Card.num_cards:
