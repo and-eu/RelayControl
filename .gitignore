@@ -1,3 +1,4 @@
 /config.json
 /.venv/
 /.idea/
+/tests/test_results/

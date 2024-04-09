@@ -1,4 +1,4 @@
-from card import Card
+import pytest
 from gui import App
 from argparse import ArgumentParser
 
@@ -14,12 +14,15 @@ if __name__ == '__main__':
     parser = ArgumentParser(prog='RelayControl', description='Open in CLI, GUI or WEB')
     parser.add_argument("--cli", help="Run the application in CLI mode", action="store_true")
     parser.add_argument("--web", help="Run the application in WEB mode", action="store_true")
+    parser.add_argument("--testgui", help="Run the tests for the GUI version", action="store_true")
     args = parser.parse_args()
 
     if args.cli:
         run_cli()
     elif args.web:
         run_web()
+    elif args.testgui:
+        pytest.main(['-v', '-s', '--log-file-level=INFO', '--log-cli-level=ERROR', 'tests'])
     else:
         pass
         app = App()
