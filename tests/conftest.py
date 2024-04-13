@@ -2,7 +2,7 @@ import pytest
 import logging
 import os
 from datetime import datetime
-from bs4 import BeautifulSoup
+
 
 report_dir = None
 
