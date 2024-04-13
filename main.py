@@ -10,6 +10,16 @@ def run_cli():
 def run_web():
     print("not implemented")
 
+def test_report_beautify():
+    txt_file = os.path.join(os.getcwd(), 'tests', 'test_results', 'lastrun.txt')
+    if os.path.exists(txt_file):
+        with open(txt_file, 'r') as txt:
+            report_dir = txt.read()
+        html_file = os.path.join(report_dir, 'report.html')
+        clean_html_report(html_file)
+        os.remove(txt_file)
+
+
 
 if __name__ == '__main__':
     parser = ArgumentParser(prog='RelayControl', description='Open in CLI, GUI or WEB')
@@ -25,15 +35,10 @@ if __name__ == '__main__':
         run_web()
     elif args.testgui:
         pytest.main(['-v', '-s', '-rxXs', '--log-file-level=INFO', '--log-cli-level=ERROR', 'tests/test_gui.py'])
-        txt_file = os.path.join(os.getcwd(), 'tests', 'test_results', 'lastrun.txt')
-        if os.path.exists(txt_file):
-            with open(txt_file, 'r') as txt:
-                report_dir = txt.read()
-            html_file = os.path.join(report_dir, 'report.html')
-            clean_html_report(html_file)
-            os.remove(txt_file)
+        test_report_beautify()
     elif args.testall:
         pytest.main(['-v', '-s', '--log-file-level=INFO', '--log-cli-level=ERROR', 'tests'])
+        test_report_beautify()
     else:
         pass
         app = App()
