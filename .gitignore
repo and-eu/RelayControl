@@ -2,3 +2,4 @@
 /.venv/
 /.idea/
 /tests/test_results/
+/tests/some tst.txt
